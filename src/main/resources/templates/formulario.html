@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiFormulario</title>
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+
+<h1>MiFarmi</h1>
+<form th:action="@{/01/form}" method="post" th:object="${producto}" >
+    <label for="nombre">
+        <span>Nombre</span>
+        <input type="text" id="nombre" th:field="*{nombre}" required>
+        <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+    </label>
+    <label for="stock">
+        <span>Stock</span>
+        <input type="number" id="stock" step="any" th:field="*{stock}" required>
+        <div th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></div>
+    </label>
+    <label for="precio">
+        <span>Precio</span>
+        <input type="number" id="precio" step="any" th:field="*{precio}" required>
+    </label>
+    <input type="submit" value="Enviar">
+
+</form>
+</body>
+</html>
